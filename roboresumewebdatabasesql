@@ -1,0 +1,46 @@
+drop database Resume;
+create database Resume;
+use Resume;
+
+create table Person (
+PersonID int NOT NULL AUTO_INCREMENT,
+FirstName varchar(50),
+LastName varchar(50),
+Email  varchar(50),
+primary key (PersonID)
+);
+
+create table Education(
+EducationID int NOT NULL AUTO_INCREMENT,
+University varchar(100),
+Degree varchar(100),
+GraduationYear int (4),
+primary key (EducationID)
+);
+
+
+create table Experience(
+ExperienceID int NOT NULL AUTO_INCREMENT,
+JobTitle varchar(50),
+Company varchar(50),
+StartDate varchar(50),
+EndDate varchar(50),
+Duty1 varchar(100),
+Duty2 varchar(100),
+primary key (ExperienceID)
+);
+
+create table Skills(
+SkillsID int NOT NULL AUTO_INCREMENT,
+Skill varchar(40),
+SkillLevel varchar(50),
+primary key (SkillsID)
+);
+
+create table Person_Education_Experience_Skills(
+PersonID varchar(50),
+EducationID varchar(50),
+ExperienceID varchar(50),
+SkillsID varchar(50)
+
+);
