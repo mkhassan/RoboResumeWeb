@@ -13,17 +13,20 @@ public class TestDBResumeApp {
 		 
 		 Person p1 = new Person("kevin", "jack", "kj@gmail.com");
 		 
+		 Person p2 = new Person("sadiq", "kabir", "sk@gmail.com");
+		 
 		 System.out.println("Add person p1 to database");
 		 
-		 boolean personadded = dao.addPerson(p1);
+		 boolean p1added = dao.addPerson(p1);
+		 boolean p2added = dao.addPerson(p2);
+	
 		 
-		 if(personadded) {
-			 System.out.println("success");
-		 }
-		 
-		boolean persondeleted = dao.deletePerson(p1);
+		Person getp1 = dao.getPerson(5,"jack");
 		
-		System.out.println(persondeleted);
+		String hisname = getp1.getFirstname();
+		
+		System.out.println(hisname);
+		
 	}
 
 }

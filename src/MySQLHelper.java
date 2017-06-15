@@ -117,13 +117,13 @@ public class MySQLHelper {
 		
 	}
 	
-	public Person getPerson(String personid, String lastname) throws SQLException {
+	public Person getPerson(int personid, String lastname) throws SQLException {
 		Person person = null;
-		String sql = "SELECT * FROM Resume.Person WHERE PersonID= ? AND LastName = ?";
+		String sql = "SELECT * FROM Person WHERE PersonID= ? AND LastName = ?";
 		
-		
+		connect();
 		PreparedStatement stm = dbConnection.prepareStatement(sql);
-		stm.setString(1,  personid);
+		stm.setLong(1,  personid);
 		stm.setString(2, lastname);
 		
 		ResultSet resultSet = stm.executeQuery();
@@ -138,9 +138,101 @@ public class MySQLHelper {
 		
 		resultSet.close();
 		stm.close();
+		disconnect();
+		
 		
 		return person;
 
 	}
+	
+	
+	public boolean addEducation(Education education) throws SQLException{
+		String sql = " INSERT INTO Education (University, Degree,"
+				+ " GraduationYear) VALUES (?,?,?)";
+		connect();
+		
+		PreparedStatement stm = dbConnection.prepareStatement(sql);
+		
+		stm.setString(1, education.getUniversity());
+		stm.setString(2, education.getDegree());
+		stm.setString(3, education.getGraduationYear());
+
+		boolean educationAdded = stm.executeUpdate() > 0;
+		stm.close();
+		disconnect();
+		return educationAdded;
+		
+	}
+	
+	
+	
+	public Education getEducation(int personid, String university) throws SQLException {
+		Education education = null;
+		String sql = "SELECT * FROM Education WHERE EducationID= ? AND University = ?";
+		
+		connect();
+		PreparedStatement stm = dbConnection.prepareStatement(sql);
+		stm.setLong(1,  personid);
+		stm.setString(2, university);
+		
+		ResultSet resultSet = stm.executeQuery();
+		
+		if (resultSet.next()) {
+			String univ = resultSet.getString("University");
+			String deg = resultSet.getString("Degree");
+			String gyear = resultSet.getString("GraduationYear");
+			
+			education = new Education(univ, deg, gyear);
+		}
+		
+		resultSet.close();
+		stm.close();
+		disconnect();
+		
+		
+		return education;
+
+	}
+	
+	
+	public boolean addExperience(Experience experience) throws SQLException{
+		String sql = " INSERT INTO Experience (JobTitle, Company,"
+				+ " StartDate, EndDate, Duty1, Duty2) VALUES (?,?,?,?,?)";
+		connect();
+		
+		PreparedStatement stm = dbConnection.prepareStatement(sql);
+		
+		stm.setString(1, experience.getJobTitle());
+		stm.setString(2, experience.getCompany());
+		stm.setString(3, experience.getStartDate());
+		stm.setString(4, experience.getEndDate());
+		stm.setString(5, experience.getDuty1());
+		stm.setString(6, experience.getDuty2());
+		boolean experienceAdded = stm.executeUpdate() > 0;
+		stm.close();
+		disconnect();
+		return experienceAdded;
+		
+	}
+	
+	
+	public boolean addSkills(Skills skill) throws SQLException{
+		String sql = " INSERT INTO Skills (Skill, SkillLevel) VALUES (?,?)";
+		connect();
+		
+		PreparedStatement stm = dbConnection.prepareStatement(sql);
+		
+		stm.setString(1, skill.getSkill());
+		stm.setString(2, skill.getSkillLevel());
+
+		boolean skillAdded = stm.executeUpdate() > 0;
+		stm.close();
+		disconnect();
+		return skillAdded;
+		
+	}
+	
+	
+	
 	
 }

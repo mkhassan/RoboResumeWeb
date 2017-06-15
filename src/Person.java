@@ -3,6 +3,7 @@ public class Person {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private int personid;
 	
 	public Person(String mfirstname, String mlastname, String memail){
 	 this.firstname = mfirstname;
@@ -10,6 +11,12 @@ public class Person {
 	 this.email = memail;
 
 	 }
+	
+	public Person(String mfirstname, String mlastname, String memail, int mpersonid){
+		this(mfirstname, mlastname, memail);
+		this.personid = mpersonid;
+	}
+	
 	
 	public String getFirstname() {
 		return firstname;
@@ -34,6 +41,18 @@ public class Person {
 	public void setEmail(String memail) {
 		email = memail;
 	}
+
+	public int getPersonid() {
+		return personid;
+	}
+
+
+
+	public void setPersonid(int personid) {
+		this.personid = personid;
+	}
+
+
 
 	@Override
 	public String toString() {
