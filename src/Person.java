@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Person {
 	
 	private String firstname;
@@ -5,10 +7,22 @@ public class Person {
 	private String email;
 	private int personid;
 	
-	public Person(String mfirstname, String mlastname, String memail){
+	private ArrayList<Education> education;
+	private ArrayList<Experience> experience;
+	private ArrayList<Skills> skills;
+	
+	
+	
+	
+	
+	public Person(String mfirstname, String mlastname, String memail ){
 	 this.firstname = mfirstname;
 	 this.lastname = mlastname;
 	 this.email = memail;
+	 this.education = new ArrayList<Education>(); 
+	 this.experience = new ArrayList<Experience>();
+	 this.skills = new ArrayList<Skills>();
+	 
 
 	 }
 	
@@ -57,9 +71,22 @@ public class Person {
 	@Override
 	public String toString() {
 		return "[FirstName=" + firstname + ", LastName=" + lastname + ", Email=" + email + "]";
-	};
+	}
+
+
+	public void addExp(Experience experience) {
+		this.experience.add(experience);
+	}
+
+	public void addEdu(Education education) {
+		this.education.add(education);
+	}
+
 	 
-	
+	public void addSki(Skills skills) {
+		this.skills.add(skills);
+	}
+
 	
 	
 }

@@ -166,13 +166,13 @@ public class MySQLHelper {
 	
 	
 	
-	public Education getEducation(int personid, String university) throws SQLException {
+	public Education getEducation(String degree, String university) throws SQLException {
 		Education education = null;
 		String sql = "SELECT * FROM Education WHERE EducationID= ? AND University = ?";
 		
 		connect();
 		PreparedStatement stm = dbConnection.prepareStatement(sql);
-		stm.setLong(1,  personid);
+		stm.setString(1,  degree);
 		stm.setString(2, university);
 		
 		ResultSet resultSet = stm.executeQuery();

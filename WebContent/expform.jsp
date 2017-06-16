@@ -8,7 +8,7 @@
 </head>
 <body>
 
- <form action="infoservlet" method="post">
+ <form action="expServlet" method="post">
   Job Title: <input type="text" name="fjobtitle"><br>
   Company: <input type="text" name="fcompany"><br>
   Start Date: <input type="text" name ="fstart"><br>

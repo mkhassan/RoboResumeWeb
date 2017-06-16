@@ -3,7 +3,7 @@ public class Education {
 	private String university;
 	private String degree;
 	private String graduationYear;
-	private String personid;
+	
 	
 	
 	

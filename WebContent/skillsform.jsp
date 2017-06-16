@@ -8,7 +8,7 @@
 </head>
 <body>
 
- <form action="infoservlet" method="post">
+ <form action="SkillsServlet" method="post">
   Skill: <input type="text" name="fskill"><br>
   Skill Level: <input type="text" name="fskilllevel"><br>
   <input type ="hidden" name ="act" value="addskill">

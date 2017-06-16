@@ -7,7 +7,7 @@
 <title> Enter your education </title>
 </head>
 <body>
- <form action="infoservlet" method="post">
+ <form action="eduservlet" method="post">
   University: <input type="text" name="funiversity"><br>
   Degree: <input type="text" name="fdegree"><br>
   Graduation Year: <input type="text" name ="fyear"><br>
